@@ -9,7 +9,7 @@ interface TextInputWithLabelProps {
     children: any;
 
 }
-const TextInputWithLabel = ({id, onInputChange, value, type = 'text', isFocused, children}:TextInputWithLabelProps) => {
+const TextInputWithLabel = ({id, onInputChange, value, type, isFocused, children}:TextInputWithLabelProps) => {
     const inputRef = React.useRef();
 
     React.useEffect(() => {

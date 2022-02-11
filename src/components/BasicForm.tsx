@@ -3,32 +3,26 @@ import TextInputWithLabel from "./TextInputWithLabel";
 
 interface BasicFormProps {
     searchTerm?: any;
-    id?: string;
-    onInputChange?: any;
-    inputLabel?: any;
-    isFocused?: any;
+    onSearchInput?: any;
+    onSearchSubmit?: any;
 }
 
-const BasicForm = ({searchTerm, id, onInputChange, inputLabel, isFocused}:BasicFormProps) => {
+const BasicForm = ({searchTerm, onSearchSubmit, onSearchInput}:BasicFormProps) => {
     return (
-        <form>
-            <div>
-                <TextInputWithLabel
-                    id={id}
-                    onInputChange={onInputChange}
-                    value={searchTerm}
-                    type='text'
-                    isFocused={isFocused}
-                >
-                    <strong>{inputLabel}</strong>
-                </TextInputWithLabel>
-            </div>
-            <div>
-                <button>
-                    Submit
+        <form onSubmit={onSearchSubmit}>
+            <TextInputWithLabel
+                id="search"
+                value={searchTerm}
+                isFocused
+                type='text'
+                onInputChange={onSearchInput}
+            >
+                <strong>Search:</strong>
+            </TextInputWithLabel>
 
-                </button>
-            </div>
+            <button type="submit" disabled={!searchTerm}>
+                Submit
+            </button>
         </form>
     )
 }
